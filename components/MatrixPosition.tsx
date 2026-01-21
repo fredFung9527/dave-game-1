@@ -11,8 +11,8 @@ export default function MatrixPosition({ position }: { position: MatrixPositionN
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null)
 
   const value = matrixData[position]
-  function onCardNameClick(value: CardName) {
-    onCardNameChange(position, value)
+  function onCardNameClick(cardName: CardName) {
+    onCardNameChange(position, cardName === value ? null : cardName)
     setAnchorEl(null)
   }
 
@@ -20,9 +20,9 @@ export default function MatrixPosition({ position }: { position: MatrixPositionN
     <>
       <Card
         sx={{
+          minHeight: 60,
           border: '1px solid',
           borderColor: 'divider',
-          p: 2,
           cursor: 'pointer',
           display: 'flex', justifyContent: 'center', alignItems: 'center'
         }}
@@ -34,7 +34,7 @@ export default function MatrixPosition({ position }: { position: MatrixPositionN
       {Boolean(anchorEl) && (
         <Menu anchorEl={anchorEl} open onClose={() => setAnchorEl(null)}>
           {CardNameOptions.map((option) => (
-            <MenuItem key={option} onClick={() => onCardNameClick(option)}>
+            <MenuItem key={option} onClick={() => onCardNameClick(option)} selected={value === option}>
               {option}
             </MenuItem>
           ))}

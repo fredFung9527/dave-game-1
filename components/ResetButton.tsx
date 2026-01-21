@@ -8,7 +8,7 @@ export default function ResetButton() {
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
-      <Button variant='outlined' color='primary' onClick={resetMatrixData}>
+      <Button variant='outlined' color='inherit' onClick={resetMatrixData}>
         清空
       </Button>
     </Box>
