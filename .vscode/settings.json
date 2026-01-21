@@ -1,0 +1,21 @@
+{
+  // indentation
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.detectIndentation": false,
+  // quote style
+  "javascript.preferences.quoteStyle": "single",
+  "typescript.preferences.quoteStyle": "single",
+  // semicolon
+  "javascript.format.semicolons": "remove",
+  "typescript.format.semicolons": "remove",
+  // file nesting
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package.json,yarn.lock,package-lock.json",
+    "next.config.ts": "next.config.ts,tsconfig.json",
+    ".env.development": ".env.development,.env.production",
+    "deploy.yaml": "deploy.yaml,.gitlab-ci.yml,Dockerfile"
+  }
+}
