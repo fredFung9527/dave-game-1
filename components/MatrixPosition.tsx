@@ -2,10 +2,22 @@
 
 import { Card, Menu } from '@mui/material'
 import { useMatrixData } from './MatrixDataProvider'
-import { MatrixPositionName } from './card'
+import { CardName, MatrixPositionName } from './card'
 import { useState } from 'react'
 import { filter, values } from 'lodash'
 import CardNamePicker from './CardNamePicker'
+
+const PairColors: Record<CardName, string> = {
+  '龍': 'primary.light',
+  '馬': 'primary.main',
+  '蟹': 'primary.dark',
+  '燈': 'secondary.light',
+  '尾': 'secondary.main',
+  '車': 'secondary.dark',
+  '貝': 'warning.light',
+  '星': 'warning.main',
+  '母': 'warning.dark',
+}
 
 export default function MatrixPosition({ position }: { position: MatrixPositionName }) {
   const { matrixData, onCardNameChange } = useMatrixData()
@@ -24,7 +36,7 @@ export default function MatrixPosition({ position }: { position: MatrixPositionN
           cursor: 'pointer',
           display: 'flex', justifyContent: 'center', alignItems: 'center',
           ...(isPaired && {
-            backgroundColor: 'primary.main',
+            backgroundColor: PairColors[value!],
             color: 'white',
           })
         }}
