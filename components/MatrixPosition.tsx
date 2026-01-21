@@ -1,10 +1,11 @@
 'use client'
 
-import { Card, Menu, MenuItem } from '@mui/material'
+import { Card, Menu } from '@mui/material'
 import { useMatrixData } from './MatrixDataProvider'
-import { CardName, CardNameOptions, MatrixPositionName } from './card'
+import { MatrixPositionName } from './card'
 import { useState } from 'react'
 import { filter, values } from 'lodash'
+import CardNamePicker from './CardNamePicker'
 
 export default function MatrixPosition({ position }: { position: MatrixPositionName }) {
   const { matrixData, onCardNameChange } = useMatrixData()
@@ -13,11 +14,6 @@ export default function MatrixPosition({ position }: { position: MatrixPositionN
 
   const value = matrixData[position]
   const isPaired = value && filter(values(matrixData), (v) => v === value).length === 2 || false
-
-  function onCardNameClick(cardName: CardName) {
-    onCardNameChange(position, cardName === value ? null : cardName)
-    setAnchorEl(null)
-  }
 
   return (
     <>
@@ -39,11 +35,13 @@ export default function MatrixPosition({ position }: { position: MatrixPositionN
 
       {Boolean(anchorEl) && (
         <Menu anchorEl={anchorEl} open onClose={() => setAnchorEl(null)}>
-          {CardNameOptions.map((option) => (
-            <MenuItem key={option} onClick={() => onCardNameClick(option)} selected={value === option}>
-              {option}
-            </MenuItem>
-          ))}
+          <CardNamePicker
+            value={value}
+            onChange={(v) => {
+              onCardNameChange(position, v)
+              setAnchorEl(null)
+            }}
+          />
         </Menu>
       )}
     </>

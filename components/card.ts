@@ -1,7 +1,5 @@
 export type CardName = '龍' | '馬' | '蟹' | '燈' | '尾' | '車' | '貝' | '星' | '母'
 
-export const CardNameOptions: CardName[] = ['龍', '馬', '蟹', '燈', '尾', '車', '貝', '星', '母']
-
 export type MatrixPositionName =
   'A1' | 'A2' | 'A3' | 'A4' | 'A5' | 'A6' |
   'B1' | 'B2' | 'B3' | 'B4' | 'B5' | 'B6' |
