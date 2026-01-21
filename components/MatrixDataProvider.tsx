@@ -1,21 +1,28 @@
 'use client'
 
-import { createContext, useContext } from 'react'
-import { CardMatrix, DefaultCardMatrix } from './card'
+import { createContext, useContext, useState } from 'react'
+import { CardMatrix, CardName, DefaultCardMatrix, MatrixPositionName } from './card'
 
 interface MatrixDataProviderProps {
   matrixData: CardMatrix,
+  onCardNameChange: (position: MatrixPositionName, value: CardName | null) => void
 }
 
 const DefaultMatrixDataProviderProps: MatrixDataProviderProps = {
-  matrixData: DefaultCardMatrix
+  matrixData: DefaultCardMatrix,
+  onCardNameChange: () => { }
 }
 
 const MatrixDataContext = createContext<MatrixDataProviderProps>(DefaultMatrixDataProviderProps)
 
 function MatrixDataProvider({ children }: { children: React.ReactNode }) {
+  const [matrixData, setMatrixData] = useState<CardMatrix>(DefaultCardMatrix)
+  function onCardNameChange(position: MatrixPositionName, value: CardName | null) {
+    setMatrixData((prev) => ({ ...prev, [position]: value }))
+  }
+
   return (
-    <MatrixDataContext.Provider value={DefaultMatrixDataProviderProps}>
+    <MatrixDataContext.Provider value={{ matrixData, onCardNameChange }}>
       {children}
     </MatrixDataContext.Provider>
   )

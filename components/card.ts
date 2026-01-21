@@ -1,6 +1,6 @@
-export type Card = '龍' | '馬' | '蟹' | '燈' | '尾' | '車' | '貝' | '星' | '母'
+export type CardName = '龍' | '馬' | '蟹' | '燈' | '尾' | '車' | '貝' | '星' | '母'
 
-export const CardOptions: Card[] = ['龍', '馬', '蟹', '燈', '尾', '車', '貝', '星', '母']
+export const CardNameOptions: CardName[] = ['龍', '馬', '蟹', '燈', '尾', '車', '貝', '星', '母']
 
 export type MatrixPositionName =
   'A1' | 'A2' | 'A3' | 'A4' | 'A5' | 'A6' |
@@ -13,7 +13,7 @@ export const TheMatrix: MatrixPositionName[][] = [
   ['C1', 'C2', 'C3', 'C4', 'C5', 'C6'],
 ]
 
-export type CardMatrix = Record<MatrixPositionName, Card | null>
+export type CardMatrix = Record<MatrixPositionName, CardName | null>
 
 export const DefaultCardMatrix: CardMatrix = {
   'A1': null,

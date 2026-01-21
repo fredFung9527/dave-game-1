@@ -13,7 +13,7 @@ export default function Home() {
             <Fragment key={index}>
               {row.map((position) => (
                 <Grid size={1} key={position}>
-                  <MatrixPosition />
+                  <MatrixPosition position={position} />
                 </Grid>
               ))}
             </Fragment>
