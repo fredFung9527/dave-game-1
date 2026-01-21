@@ -5,24 +5,35 @@ import { CardMatrix, CardName, DefaultCardMatrix, MatrixPositionName } from './c
 
 interface MatrixDataProviderProps {
   matrixData: CardMatrix,
-  onCardNameChange: (position: MatrixPositionName, value: CardName | null) => void
+  onCardNameChange: (position: MatrixPositionName, value: CardName | null) => void,
+  resetMatrixData: () => void
 }
 
 const DefaultMatrixDataProviderProps: MatrixDataProviderProps = {
   matrixData: DefaultCardMatrix,
-  onCardNameChange: () => { }
+  onCardNameChange: () => { },
+  resetMatrixData: () => { }
 }
 
 const MatrixDataContext = createContext<MatrixDataProviderProps>(DefaultMatrixDataProviderProps)
 
 function MatrixDataProvider({ children }: { children: React.ReactNode }) {
   const [matrixData, setMatrixData] = useState<CardMatrix>(DefaultCardMatrix)
+
   function onCardNameChange(position: MatrixPositionName, value: CardName | null) {
     setMatrixData((prev) => ({ ...prev, [position]: value }))
   }
 
+  function resetMatrixData() {
+    setMatrixData(DefaultCardMatrix)
+  }
+
   return (
-    <MatrixDataContext.Provider value={{ matrixData, onCardNameChange }}>
+    <MatrixDataContext.Provider
+      value={{
+        matrixData, onCardNameChange, resetMatrixData
+      }}
+    >
       {children}
     </MatrixDataContext.Provider>
   )

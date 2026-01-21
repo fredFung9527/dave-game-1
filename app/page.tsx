@@ -1,6 +1,7 @@
 import { TheMatrix } from '@/components/card'
 import { MatrixDataProvider } from '@/components/MatrixDataProvider'
 import MatrixPosition from '@/components/MatrixPosition'
+import ResetButton from '@/components/ResetButton'
 import { Container, Grid } from '@mui/material'
 import { Fragment } from 'react/jsx-runtime'
 
@@ -19,6 +20,8 @@ export default function Home() {
             </Fragment>
           ))}
         </Grid>
+
+        <ResetButton />
       </MatrixDataProvider>
     </Container>
   )
