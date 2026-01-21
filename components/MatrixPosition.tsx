@@ -1,6 +1,11 @@
+'use client'
+
 import { Box } from '@mui/material'
+import { useMatrixData } from './MatrixDataProvider'
 
 export default function MatrixPosition() {
+  const { matrixData } = useMatrixData()
+
   return (
     <Box
       sx={{
