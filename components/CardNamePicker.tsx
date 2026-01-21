@@ -1,5 +1,6 @@
 import { Box, Divider, Grid } from '@mui/material'
 import { CardName } from './card'
+import { Fragment } from 'react/jsx-runtime'
 
 const FirstRow: CardName[] = ['龍', '馬', '蟹']
 const SecondRow: CardName[] = ['燈', '尾', '車']
@@ -20,29 +21,18 @@ export default function CardNamePicker({
 
   return (
     <Box sx={{ px: 3, py: 2 }}>
-      <Grid container spacing={Spacing}>
-        {FirstRow.map((cardName) => (
-          <Grid size={4} key={cardName} onClick={() => onCardNameClick(cardName)} sx={{ cursor: 'pointer', color: value === cardName ? 'primary.main' : undefined }}>
-            {cardName}
+      {[FirstRow, SecondRow, ThirdRow].map((row, idx) => (
+        <Fragment key={idx}>
+          {Boolean(idx) && <Divider sx={{ my: Spacing }} />}
+          <Grid container spacing={Spacing} key={row.join(',')}>
+            {row.map((cardName) => (
+              <Grid size={4} key={cardName} onClick={() => onCardNameClick(cardName)} sx={{ cursor: 'pointer', color: value === cardName ? 'primary.main' : undefined }}>
+                {cardName}
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
-      <Divider sx={{ my: Spacing }} />
-      <Grid container spacing={Spacing}>
-        {SecondRow.map((cardName) => (
-          <Grid size={4} key={cardName} onClick={() => onCardNameClick(cardName)} sx={{ cursor: 'pointer', color: value === cardName ? 'primary.main' : undefined }}>
-            {cardName}
-          </Grid>
-        ))}
-      </Grid>
-      <Divider sx={{ my: Spacing }} />
-      <Grid container spacing={Spacing}>
-        {ThirdRow.map((cardName) => (
-          <Grid size={4} key={cardName} onClick={() => onCardNameClick(cardName)} sx={{ cursor: 'pointer', color: value === cardName ? 'primary.main' : undefined }}>
-            {cardName}
-          </Grid>
-        ))}
-      </Grid>
+        </Fragment>
+      ))}
     </Box>
   )
 }
