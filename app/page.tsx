@@ -1,7 +1,9 @@
+import { Container } from '@mui/material'
+
 export default function Home() {
   return (
-    <div>
+    <Container>
       <h1>Hello World</h1>
-    </div>
+    </Container>
   )
 }
