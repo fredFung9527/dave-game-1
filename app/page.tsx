@@ -1,9 +1,22 @@
-import { Container } from '@mui/material'
+import { TheMatrix } from '@/components/card'
+import MatrixPosition from '@/components/MatrixPosition'
+import { Container, Grid } from '@mui/material'
+import { Fragment } from 'react/jsx-runtime'
 
 export default function Home() {
   return (
-    <Container>
-      <h1>Hello World</h1>
+    <Container sx={{ p: 2 }} maxWidth='xs' disableGutters>
+      <Grid container spacing={2} columns={6}>
+        {TheMatrix.map((row, index) => (
+          <Fragment key={index}>
+            {row.map((position) => (
+              <Grid size={1} key={position}>
+                <MatrixPosition />
+              </Grid>
+            ))}
+          </Fragment>
+        ))}
+      </Grid>
     </Container>
   )
 }
