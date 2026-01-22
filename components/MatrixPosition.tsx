@@ -25,7 +25,7 @@ export default function MatrixPosition({ position }: { position: MatrixPositionN
   const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null)
 
   const value = matrixData[position]
-  const isPaired = value && filter(values(matrixData), (v) => v === value).length === 2 || false
+  const isPaired = value && filter(values(matrixData), (v) => v === value).length > 1 || false
 
   return (
     <>
