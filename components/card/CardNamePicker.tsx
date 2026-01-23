@@ -6,7 +6,7 @@ const FirstRow: CardName[] = ['龍', '馬', '蟹']
 const SecondRow: CardName[] = ['燈', '尾', '車']
 const ThirdRow: CardName[] = ['貝', '星', '母']
 
-const Spacing = 3
+const Spacing = 2.5
 
 export default function CardNamePicker({
   value,
@@ -20,13 +20,22 @@ export default function CardNamePicker({
   }
 
   return (
-    <Box sx={{ px: 3, py: 2 }}>
+    <Box>
       {[FirstRow, SecondRow, ThirdRow].map((row, idx) => (
         <Fragment key={idx}>
-          {Boolean(idx) && <Divider sx={{ my: Spacing }} />}
-          <Grid container spacing={Spacing} key={row.join(',')}>
+          {Boolean(idx) && <Divider />}
+          <Grid container key={row.join(',')}>
             {row.map((cardName) => (
-              <Grid size={4} key={cardName} onClick={() => onCardNameClick(cardName)} sx={{ cursor: 'pointer', color: value === cardName ? 'primary.main' : undefined }}>
+              <Grid
+                size={4}
+                key={cardName}
+                onClick={() => onCardNameClick(cardName)}
+                sx={{
+                  cursor: 'pointer',
+                  color: value === cardName ? 'primary.main' : undefined,
+                  p: Spacing
+                }}
+              >
                 {cardName}
               </Grid>
             ))}

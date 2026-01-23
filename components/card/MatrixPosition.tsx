@@ -46,7 +46,7 @@ export default function MatrixPosition({ position }: { position: MatrixPositionN
       </Card>
 
       {Boolean(anchorEl) && (
-        <Menu anchorEl={anchorEl} open onClose={() => setAnchorEl(null)}>
+        <Menu anchorEl={anchorEl} open onClose={() => setAnchorEl(null)} slotProps={{ list: { sx: { p: 0 } } }}>
           <CardNamePicker
             value={value}
             onChange={(v) => {
