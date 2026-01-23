@@ -1,10 +1,10 @@
 import CardMatrix from '@/components/card/CardMatrix'
-import { Container } from '@mui/material'
+import { Box } from '@mui/material'
 
 export default function Home() {
   return (
-    <Container sx={{ p: 2 }} maxWidth='xs' disableGutters>
+    <Box sx={{ p: 2 }}>
       <CardMatrix />
-    </Container>
+    </Box>
   )
 }
