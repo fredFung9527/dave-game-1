@@ -4,7 +4,7 @@ import { Button, Grid, TextField, Typography } from '@mui/material'
 import { useSharkData } from './SharkDataProvider'
 
 export default function UsedInput() {
-  const { used, setUsed } = useSharkData()
+  const { used, setUsed, setTargetIndex } = useSharkData()
 
   function onUsedInput(v: string) {
     const number = Number(v)
@@ -39,6 +39,18 @@ export default function UsedInput() {
         </Grid>
         <Grid size={1}>
           <Button variant='outlined' color='primary' onClick={() => setUsed(used + 3)} size='small'>+3</Button>
+        </Grid>
+        <Grid size={1}>
+          <Button
+            variant='text' color='inherit'
+            onClick={() => {
+              setUsed(0)
+              setTargetIndex(0)
+            }}
+            size='small'
+          >
+            重設
+          </Button>
         </Grid>
       </Grid>
     </>

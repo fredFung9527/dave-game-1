@@ -1,7 +1,8 @@
-import { Box } from '@mui/material'
+import { Box, Divider } from '@mui/material'
 import { SharkDataProvider } from './SharkDataProvider'
 import TargetIndexPicker from './TargetIndexPicker'
 import UsedInput from './UsedInput'
+import Suggestion from './Suggestion'
 
 export default function SharkGame() {
   return (
@@ -10,6 +11,8 @@ export default function SharkGame() {
       <Box sx={{ mt: 2 }}>
         <UsedInput />
       </Box>
+      <Divider sx={{ mt: 3, mb: 2 }} />
+      <Suggestion />
     </SharkDataProvider>
   )
 }
